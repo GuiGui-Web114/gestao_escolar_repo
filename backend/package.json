@@ -1,0 +1,26 @@
+{
+  "name": "backend",
+  "version": "1.0.0",
+  "description": "Backend do Sistema de Gestão Escolar",
+  "main": "src/backend/server.js",
+  "scripts": {
+    "dev": "nodemon server.js",
+    "start": "node server.js",
+	"migrate": "node database/migrate.js",
+ "seed": "node database/seeds/seed.js",
+"db:test": "node database/test-db.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "dependencies": {
+    "better-sqlite3": "^13.0.3",
+    "fastify": "^5.12.3",
+    "zod": "^4.6.2"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.14"
+  }
+}

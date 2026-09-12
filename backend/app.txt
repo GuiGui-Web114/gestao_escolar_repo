@@ -1,0 +1,14 @@
+const Fastify = require("fastify");
+
+const app = Fastify({
+  logger: true
+});
+
+app.get("/health", async () => {
+  return {
+    status: "ok",
+    service: "school-management-api"
+  };
+});
+
+module.exports = app;
