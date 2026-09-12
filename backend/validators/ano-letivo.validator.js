@@ -1,0 +1,39 @@
+const { z } = require("zod");
+
+const criarAnoLetivoSchema = z.object({
+  nome: z
+    .string()
+    .trim()
+    .min(1, "Nome é obrigatório")
+    .max(20),
+
+  data_inicio: z
+    .string()
+    .date(),
+
+  data_fim: z
+    .string()
+    .date(),
+
+  ativo: z
+    .union([
+      z.boolean(),
+      z.number().int().min(0).max(1)
+    ])
+    .optional()
+    .default(0)
+});
+
+const atualizarAnoLetivoSchema =
+  criarAnoLetivoSchema;
+
+const idSchema = z.coerce
+  .number()
+  .int()
+  .positive();
+
+module.exports = {
+  criarAnoLetivoSchema,
+  atualizarAnoLetivoSchema,
+  idSchema
+};
