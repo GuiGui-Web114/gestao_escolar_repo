@@ -1,0 +1,199 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+.login-container {
+  display: flex;
+  min-height: 100vh;
+  width: 100vw;
+  font-family: 'Inter', system-ui, sans-serif;
+  background-color: #fff;
+}
+
+/* --- LADO ESQUERDO: VISUAL --- */
+.login-visual-side {
+  flex: 1;
+  background-image: url('../../assets/img/lucid-origin_Candid_high-quality_photograph_of_diverse_African_university_students_studying_t-0.jpg');
+  background-size: cover;
+  background-position: center;
+  position: relative;
+  display: flex;
+}
+
+.visual-overlay {
+  width: 100%;
+  padding: 48px;
+  background: linear-gradient(180deg, rgba(15, 62, 201, 0.5) 100%);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  color: #ffffff;
+}
+
+.brand-header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.logo-badge {
+  background: #ffffff;
+  color: #0f3cc9;
+  font-weight: 800;
+  padding: 12px 12px;
+  width: 78px;
+    height: 78px;
+  border-radius: 10vw;
+  font-size: 16px;
+}
+
+.brand-name {
+  font-size: 22px;
+  font-weight: 700;
+}
+
+.visual-content {
+  max-width: 500px;
+}
+
+.badge-tag {
+  background: rgba(255, 255, 255, 0.2);
+  backdrop-filter: blur(8px);
+  padding: 6px 14px;
+  border-radius: 20px;
+  font-size: 13px;
+  font-weight: 600;
+}
+
+.visual-content h2 {
+  font-size: 32px;
+  margin: 16px 0 12px 0;
+  line-height: 1.2;
+}
+
+.visual-content p {
+  font-size: 15px;
+  color: #e2e8f0;
+  line-height: 1.5;
+}
+
+
+/* --- LADO DIREITO: FORMULÁRIO --- */
+.login-form-side {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 40px 24px;
+}
+
+.form-wrapper {
+  width: 80%;
+  max-width: 400px;
+  padding: 20px 24px;
+  border-radius: 6%;
+  background-color: #ffffff;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.242);
+}
+
+.form-header h2 {
+  font-size: 26px;
+  color: #0f172a;
+}
+
+.form-header p {
+  color: #64748b;
+  font-size: 14px;
+  margin-top: 6px;
+}
+
+.login-form {
+  margin-top: 28px;
+}
+
+.input-group {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  margin-bottom: 18px;
+}
+
+.input-group label {
+  font-size: 13px;
+  font-weight: 600;
+  color: #334155;
+}
+
+.input-group input {
+  padding: 12px 16px;
+  border: 1.5px solid #e2e8f0;
+  border-radius: 10px;
+  font-size: 14px;
+  outline: none;
+  transition: all 0.2s;
+}
+
+.input-group input:focus {
+  border-color: #0f3cc9;
+  box-shadow: 0 0 0 3px rgba(15, 60, 201, 0.1);
+}
+
+.form-actions {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 13px;
+  margin-bottom: 24px;
+}
+
+.remember-me {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  color: #475569;
+}
+
+.forgot-link {
+  color: #0f3cc9;
+  text-decoration: none;
+  font-weight: 600;
+}
+
+.submit-btn {
+  width: 100%;
+  padding: 12px;
+  background-color: #0f3cc9;
+  color: #ffffff;
+  border: none;
+  border-radius: 10px;
+  font-size: 15px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.submit-btn:hover {
+  background-color: #0c32a6;
+}
+
+.register-footer {
+  text-align: center;
+  margin-top: 24px;
+  font-size: 14px;
+  color: #64748b;
+}
+
+.register-footer a {
+  color: #0f3cc9;
+  text-decoration: none;
+  font-weight: 700;
+}
+
+/* Responsividade para Telemóveis/Tablets */
+@media (max-width: 900px) {
+  .login-visual-side {
+    display: none; /* Oculta a imagem em ecrãs pequenos para focar no formulário */
+  }
+}
