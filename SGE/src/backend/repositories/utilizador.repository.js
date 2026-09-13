@@ -1,0 +1,88 @@
+const db = require("../database/connection");
+
+function buscarPorEmail(email) {
+  return db
+    .prepare(`
+      SELECT
+        u.id,
+        u.nome,
+        u.username,
+        u.email,
+        u.password_hash,
+        u.perfil_id,
+        u.ativo,
+        u.ultimo_login,
+        p.nome AS perfil
+      FROM utilizadores u
+      INNER JOIN perfis p
+        ON p.id = u.perfil_id
+      WHERE LOWER(u.email) = LOWER(?)
+      LIMIT 1
+    `)
+    .get(email);
+}
+
+function buscarPorId(id) {
+  return db
+    .prepare(`
+      SELECT
+        u.id,
+        u.nome,
+        u.username,
+        u.email,
+        u.perfil_id,
+        u.ativo,
+        u.ultimo_login,
+        p.nome AS perfil
+      FROM utilizadores u
+      INNER JOIN perfis p
+        ON p.id = u.perfil_id
+      WHERE u.id = ?
+      LIMIT 1
+    `)
+    .get(id);
+}
+
+function criar(dados) {
+  const result = db
+    .prepare(`
+      INSERT INTO utilizadores (
+        nome,
+        username,
+        email,
+        password_hash,
+        perfil_id,
+        ativo
+      )
+      VALUES (?, ?, ?, ?, ?, ?)
+    `)
+    .run(
+      dados.nome,
+      dados.username,
+      dados.email ?? null,
+      dados.password_hash,
+      dados.perfil_id,
+      dados.ativo ?? 1
+    );
+
+  return buscarPorId(result.lastInsertRowid);
+}
+
+function atualizarUltimoLogin(id) {
+  return db
+    .prepare(`
+      UPDATE utilizadores
+      SET
+        ultimo_login = CURRENT_TIMESTAMP,
+        updated_at = CURRENT_TIMESTAMP
+      WHERE id = ?
+    `)
+    .run(id);
+}
+
+module.exports = {
+  buscarPorEmail,
+  buscarPorId,
+  criar,
+  atualizarUltimoLogin
+};
